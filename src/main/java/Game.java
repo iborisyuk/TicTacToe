@@ -16,7 +16,7 @@ public class Game {
         if (!field[x][y].equals(""))
             throw new AlreadyFilledFieldException();
 
-        if (!winner.equals(""))
+        if (checkFoundWinner())
             throw new GameAlreadyEndedException();
 
         field[x][y] = getPlayer();
@@ -70,6 +70,10 @@ public class Game {
 
     public String getWinner() {
         return winner;
+    }
+
+    public boolean checkFoundWinner() {
+        return !winner.equals("");
     }
 
     @Override

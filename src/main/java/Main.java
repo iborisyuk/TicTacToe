@@ -10,7 +10,7 @@ public class Main {
 
         while (true) {
             System.out.println(game);
-            if (!game.getWinner().equals("")) {
+            if (game.checkFoundWinner()) {
                 System.out.printf("Congratulations to player %s on victory.\n", game.getWinner());
                 break;
             }

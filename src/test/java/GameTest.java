@@ -2,7 +2,7 @@ import exceptions.AlreadyFilledFieldException;
 import exceptions.GameAlreadyEndedException;
 import org.junit.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class GameTest {
 
@@ -139,5 +139,26 @@ public class GameTest {
         assertEquals(game.getPlayer(), "O");
         game.step(0,0);
         assertEquals(game.getPlayer(), "O");
+    }
+
+    @Test
+    public void mustSuccessCheckedFoundWinner() {
+        game.step(0, 0);
+        game.step(0, 1);
+        game.step(1, 1);
+        game.step(1, 2);
+        game.step(2, 2);
+
+        assertTrue(game.checkFoundWinner());
+    }
+
+    @Test
+    public void mustFailedCheckedFoundWinner() {
+        game.step(0, 0);
+        game.step(0, 1);
+        game.step(1, 1);
+        game.step(1, 2);
+
+        assertFalse(game.checkFoundWinner());
     }
 }
